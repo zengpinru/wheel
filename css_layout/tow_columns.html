@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两列自适应布局</title>
+  <style>
+    p {
+      margin: 0;
+    }
+    .float {
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
+    .float-left {
+      float: left;
+      padding-bottom: 200px;
+      margin-bottom: -200px;
+      background-color: aqua;
+    }
+    .float-right {
+      padding-bottom: 200px;
+      margin-bottom: -200px;
+      background-color: bisque;
+      overflow: hidden;
+      zoom: 1;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex-left {
+      flex: 0 1 auto;
+      background-color: aqua;
+    }
+    .flex-right {
+      flex: 1 1 auto;
+      background-color: bisque;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+    .grid-left {
+      background-color: aqua;
+    }
+    .grid-right {
+      background-color: bisque;
+    }
+    .holy {
+      padding: 0 220px;
+      overflow: hidden;
+    }
+    .holy-left {
+      position: relative;
+      right: 220px;
+      float: left;
+      width: 220px;
+      margin-left: -100%;
+      padding-bottom: 200px;
+      margin-bottom: -200px;
+      background-color: aqua;
+    }
+    .holy-center {
+      float: left;
+      width: 100%;
+      padding-bottom: 200px;
+      margin-bottom: -200px;
+      background-color: bisque;
+    }
+    .holy-right {
+      position: relative;
+      left: 220px;
+      float: left;
+      width: 220px;
+      margin-left: -220px;
+      padding-bottom: 200px;
+      margin-bottom: -200px;
+      background-color: beige;
+    }
+    .twin {
+      overflow: hidden;
+    }
+    .twin-center {
+      float: left;
+      width: 100%;
+      padding-bottom: 200px;
+      margin-bottom: -200px;
+      background-color: aqua;
+    }
+    .twin-center-inner {
+      margin: 0 200px;
+    }
+    .twin-left {
+      float: left;
+      width: 200px;
+      margin-left: -100%;
+      padding-bottom: 200px;
+      margin-bottom: -200px;
+      background-color: bisque;
+    }
+    .twin-right {
+      float: left;
+      width: 200px;
+      margin-left: -200px;
+      padding-bottom: 200px;
+      margin-bottom: -200px;
+      background-color: beige;
+    }
+    .three-flex {
+      display: flex;
+    }
+    .three-flex-left {
+      flex: 0 1 200px;
+      order: 1;
+      background-color: aqua;
+    }
+    .three-flex-center {
+      flex: 1 1 auto;
+      order: 2;
+      background-color: bisque;
+    }
+    .three-flex-right {
+      flex: 0 1 200px;
+      order: 3;
+      background-color: beige;
+    }
+    .three-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr 200px;
+      grid-auto-flow: dense;
+    }
+    .three-grid-left {
+      grid-column: 1 / 2;
+      background-color: darkseagreen;
+    }
+    .three-grid-center {
+      grid-column: 2 / 3;
+      background-color: darkorange;
+    }
+    .three-grid-right {
+      grid-column: 3 / 4;
+      background-color: cyan;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h3>两列布局</h3>
+    <section>
+      <h4>----两列布局-float</h4>
+      <div class="float">
+        <div class="float-left">
+          <p>1fafadfdfagwefsdsga</p>
+          <p>2</p>
+          <p>3</p>
+        </div>
+        <div class="float-right">
+          <p>对于宽度：margin-left + border-left + padding-left + width + padding-right + margin-right = 父元素的宽度</p>
+          <p>对于高度：父元素的高度 = margin-top + border-top + padding-top + height + padding-bottom + border-bottom + margin-bottom</p>
+          <p>2</p>
+          <p>2</p>
+          <p>2</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h4>----两列布局-flex</h4>
+      <div class="flex">
+        <div class="flex-left">
+          <p>1</p>
+          <p>2</p>
+        </div>
+        <div class="flex-right">right</div>
+      </div>
+    </section>
+    <section>
+      <h4>----两列布局-grid</h4>
+      <div class="grid">
+        <div class="grid-left">
+          <p>1</p>
+          <p>2</p>
+        </div>
+        <div class="grid-right">right</div>
+      </div>
+    </section>
+  </section>
+  <section>
+    <h3>三列布局</h3>
+    <section>
+      <h4>----三列布局-圣杯布局</h4>
+      <div class="holy">
+        <div class="holy-center">center</div>
+        <div class="holy-left">left</div>
+        <div class="holy-right">
+          <p>right</p>
+          <p>s</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h4>----三列布局-双飞翼布局</h4>
+      <div class="twin">
+        <div class="twin-center">
+          <div class="twin-center-inner">
+            <p>center</p>
+            <p>center</p>
+          </div>
+        </div>
+        <div class="twin-left">left</div>
+        <div class="twin-right">right</div>
+      </div>
+    </section>
+    <section>
+      <h4>----三列布局-flex</h4>
+      <div class="three-flex">
+        <div class="three-flex-center">center</div>
+        <div class="three-flex-left">left</div>
+        <div class="three-flex-right">right</div>
+      </div>
+    </section>
+    <section>
+      <h4>----三列布局-grid</h4>
+      <div class="three-grid">
+        <div class="three-grid-center">center</div>
+        <div class="three-grid-left">left</div>
+        <div class="three-grid-right">right</div>
+      </div>
+    </section>
+  </section>
+</body>
+</html>

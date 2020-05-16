@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <template id="my-template">
+    <style>
+      p {
+        background-color: brown;
+        color: cornsilk
+      }
+      div {
+        width: 200px;
+        background-color: bisque;
+        border: 3px solid chocolate;
+        border-radius: 10px;
+      }
+    </style>
+    <div>
+      <p>ppppp</p>
+      <p>ppppp</p>
+    </div>
+    <script>
+      function foo() {
+        console.log('inner log')
+      }
+    </script>
+  </template>
+  <script>
+    class MyTemplate extends HTMLElement {
+      constructor() {
+        super()
+        //获取组件模板
+        const content = document.querySelector('#my-template').content
+        //创建影子DOM节点
+        const shadowDOM = this.attachShadow({ mode: 'open' })
+        //将模板添加到影子DOM上
+        shadowDOM.appendChild(content.cloneNode(true))
+      }
+    }
+    customElements.define('my-template', MyTemplate)
+  </script>
+  <my-template></my-template>
+  <div>
+    <p>test1</p>
+    <p>test2</p>
+  </div>
+  <my-template></my-template>
+</body>
+</html>
